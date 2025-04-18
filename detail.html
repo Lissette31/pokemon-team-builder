@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pokémon Details</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="home-container">
+    <nav class="nav-tabs">
+      <a href="index.html">Home</a>
+      <a href="create.html">Create a Pokémon</a>
+      <a href="gallery.html">Pokémon Gallery</a>
+    </nav>
+
+    <div class="home-content">
+      <h1>Pokémon Details</h1>
+      <div class="pokemon-detail-card">
+        <img id="pokemon-img" class="pokemon-img" src="" alt="Pokémon Image" />
+        <h2 id="pokemon-name"></h2>
+        <p><strong>Level:</strong> <span id="pokemon-level"></span></p>
+        <p><strong>Type:</strong> <span id="pokemon-type"></span></p>
+        <p id="battle-message" class="battle-msg"></p>
+        <a id="edit-link" class="submit-btn" href="#">Edit This Pokémon</a>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+
+    const supabase = createClient(
+      'https://byksolxmcpciwzthpsre.supabase.co',
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ5a3NvbHhtY3BjaXd6dGhwc3JlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ4NDc3NDAsImV4cCI6MjA2MDQyMzc0MH0.7Eip2yz8Y7C6VLxmHJ_QUKqesj0w2sFoCOhold2J4fQ'
+    );
+
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+
+    const nameEl = document.getElementById('pokemon-name');
+    const levelEl = document.getElementById('pokemon-level');
+    const typeEl = document.getElementById('pokemon-type');
+    const imgEl = document.getElementById('pokemon-img');
+    const editLink = document.getElementById('edit-link');
+    const battleMsg = document.getElementById('battle-message');
+
+    async function loadPokemon() {
+      const { data, error } = await supabase
+        .from('pokemon')
+        .select('*')
+        .eq('id', id)
+        .single();
+
+      if (error) {
+        console.error('Error loading Pokémon:', error);
+        return;
+      }
+
+      nameEl.textContent = data.name;
+      levelEl.textContent = data.level;
+      typeEl.textContent = data.type;
+      imgEl.src = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png';
+      editLink.href = `edit.html?id=${data.id}`;
+
+      // ✅ Add battle message
+      if (data.level > 30) {
+        battleMsg.textContent = `Wow, ${data.name} is super strong! They'll be helpful in battle! ⚔️🔥`;
+      } else {
+        battleMsg.textContent = `Train ${data.name} more to become battle ready! 💪`;
+      }
+    }
+
+    loadPokemon();
+  </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Create Pokémon</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="home-container">
+    <nav class="nav-tabs">
+      <a href="index.html">Home</a>
+      <a href="create.html" class="active-tab">Create a Pokémon</a>
+      <a href="gallery.html">Pokémon Gallery</a>
+    </nav>
+
+    <div class="home-content">
+      <h1>Create a New Pokémon</h1>
+      <p>Fill out the form below to add a Pokémon to your team!</p>
+      <img src="https://img.pokemondb.net/sprites/home/normal/pikachu.png" alt="Pikachu" class="charizard-img" />
+
+      <form id="pokemon-form" class="pokemon-form">
+        <div class="form-card">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" placeholder="Enter Pokémon's name" required />
+        </div>
+
+        <div class="form-card">
+          <label for="level">Level:</label>
+          <input type="number" id="level" name="level" placeholder="Enter level" required />
+        </div>
+
+        <div class="form-card">
+          <label>Type:</label>
+          <div class="type-options">
+            <label><input type="radio" name="type" value="Electric" required /> Electric</label>
+            <label><input type="radio" name="type" value="Fire" /> Fire</label>
+            <label><input type="radio" name="type" value="Water" /> Water</label>
+            <label><input type="radio" name="type" value="Grass" /> Grass</label>
+            <label><input type="radio" name="type" value="Psychic" /> Psychic</label>
+            <label><input type="radio" name="type" value="Fighting" /> Fighting</label>
+            <label><input type="radio" name="type" value="Ice" /> Ice</label>
+            <label><input type="radio" name="type" value="Dragon" /> Dragon</label>
+            <label><input type="radio" name="type" value="Dark" /> Dark</label>
+          </div>
+        </div>
+
+        <button type="submit" class="submit-btn">Add Pokémon</button>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>

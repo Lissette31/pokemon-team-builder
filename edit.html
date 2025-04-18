@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Edit Pokémon</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="home-container">
+    <nav class="nav-tabs">
+      <a href="index.html">Home</a>
+      <a href="create.html">Create a Pokémon</a>
+      <a href="gallery.html">Pokémon Gallery</a>
+    </nav>
+
+    <div class="home-content">
+      <h1>Edit Pokémon</h1>
+      <form id="edit-form" class="pokemon-form">
+        <div class="form-card">
+          <label for="edit-name">Name:</label>
+          <input type="text" id="edit-name" required />
+        </div>
+
+        <div class="form-card">
+          <label for="edit-level">Level:</label>
+          <input type="number" id="edit-level" required />
+        </div>
+
+        <div class="form-card">
+          <label>Type:</label>
+          <div class="type-options" id="edit-types">
+            <label><input type="radio" name="type" value="Electric" /> Electric</label>
+            <label><input type="radio" name="type" value="Fire" /> Fire</label>
+            <label><input type="radio" name="type" value="Water" /> Water</label>
+            <label><input type="radio" name="type" value="Grass" /> Grass</label>
+            <label><input type="radio" name="type" value="Psychic" /> Psychic</label>
+            <label><input type="radio" name="type" value="Fighting" /> Fighting</label>
+            <label><input type="radio" name="type" value="Ice" /> Ice</label>
+            <label><input type="radio" name="type" value="Dragon" /> Dragon</label>
+            <label><input type="radio" name="type" value="Dark" /> Dark</label>
+          </div>
+        </div>
+
+        <div class="submit-card">
+          <button type="submit" class="submit-btn">Save Changes</button>
+          <button id="delete-btn" class="delete-btn" type="button">Delete Pokémon</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="edit.js"></script>
+</body>
+</html>
